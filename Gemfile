@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.2.12'
 gem 'sqlite3'
 
+gem 'devise'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -13,34 +15,33 @@ end
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
-gem 'slim'
-gem 'sinatra'
 gem 'omniauth-github'
-gem 'yajl-ruby'
-gem 'faraday'
-gem 'faraday_middleware'
-gem 'capistrano', '~> 2.13'
-gem 'capistrano_colors'
-gem 'rvm-capistrano'
-gem 'capistrano_rsync_with_remote_cache'
 gem 'grit'
-gem 'dotiw'
 gem 'inherited_resources'
 gem 'kaminari'
-gem 'permanent_records'
 gem 'simple_form', '~> 2'
-gem 'open4'
 gem 'ansible'
 gem 'unicorn'
+
+#gem 'open4'
+#gem 'permanent_records'
+#gem 'dotiw'
+#gem 'slim'
+#gem 'sinatra'
+#gem 'yajl-ruby'
+#gem 'faraday'
+#gem 'faraday_middleware'
 
 # While these are not needed by Strano itself, without them installed, any project
 # that requires them will die when Strano tries to run a cap task. By using
 # :require => nil, these don't get required/loaded into Strano, but are installed
 # for projects to use if needed.
-gem 'delayed_job', :require => nil
+#gem 'delayed_job'#, :require => nil
+gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'whenever', :require => nil
-gem 'airbrake', :require => nil
-gem 'newrelic_rpm', :require => nil
+#gem 'airbrake', :require => nil
+#gem 'newrelic_rpm', :require => nil
 
 group :development, :test do
   gem 'rspec-rails'
@@ -54,8 +55,12 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'guard-pow'
+  gem 'capistrano', '~> 2.13'
   gem 'capistrano-unicorn', :require => false
-#  gem 'rvm-capistrano', '~> 1.4.4'
+  gem 'capistrano-shared_file'
+  gem 'capistrano_colors'
+  gem 'capistrano_rsync_with_remote_cache'
+  gem 'rvm-capistrano'
 end
 
 group :test do

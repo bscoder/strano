@@ -1,9 +1,14 @@
 Strano::Application.routes.draw do
 
+  devise_for :users
+
   match '/auth/:provider/callback' => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
-  get 'sign_in', :to => 'sessions#new', :as => :sign_in
-  delete 'sign_out', :to => 'sessions#destroy', :as => :sign_out
+
+  devise_scope :user do
+    get 'sign_in', :to => 'devise/sessions#new'
+    delete 'sign_out', :to => 'devise/sessions#destroy'
+  end
 
   resources :projects, :except => [:edit, :update] do
     get :pull, :on => :member

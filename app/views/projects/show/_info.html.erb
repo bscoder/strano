@@ -12,16 +12,12 @@
 
     <p>Description</p>
     <p>Repository</p>
-    <%- if resource.organization? -%><p>Organization</p><%- end -%>
 
   </div>
   <div class="span9">
 
     <p><strong><%= resource.description.blank? ? '&nbsp;'.html_safe : resource.description %></strong></p>
-    <p><%= link_to resource.html_url, resource.html_url %></p>
-    <%- if resource.organization? -%>
-      <p><%= link_to resource.organization.login, "https://github.com/#{resource.organization.login}" %></p>
-    <%- end -%>
+    <p><strong><%= resource.url %></strong></p>
 
   </div>
 </div>

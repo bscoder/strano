@@ -1,5 +1,5 @@
 <%- title 'Welcome' -%>
 
-<%- unless signed_in? -%>
+<%- unless user_signed_in? -%>
   <p>You are not signed in. <%= link_to "Please sign in now...", sign_in_path %></p>
 <%- end -%>

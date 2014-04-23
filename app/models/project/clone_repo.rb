@@ -16,10 +16,5 @@ class Project
                           :pull_in_progress => false},
                           :id => project_id)
     end
-
-    def self.perform_async project_id
-      Job.create! :project_id => project_id, :visible => false,
-        :notes => 'CloneRepo'
-    end
   end
 end

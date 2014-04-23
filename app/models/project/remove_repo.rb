@@ -7,10 +7,5 @@ class Project
         return
       end
     end
-
-    def self.perform_async project_id
-      Job.create! :project_id => project_id, :visible => false,
-        :notes => 'RemoveRepo'
-    end
   end
 end

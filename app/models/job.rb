@@ -13,10 +13,16 @@ class Job < ActiveRecord::Base
 
   validate :precense => :task, :if => :visible
 
+  after_create :perform_delay
+
   def self.deleted
     self.unscoped.where 'deleted_at IS NOT NULL'
   end
 
+  def perform_delay
+    self.delay.perform
+  end
+  
   def perform
     Rails.logger.info "Performing Job #{id}"
     if visible?
