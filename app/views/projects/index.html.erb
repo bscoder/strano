@@ -1,7 +1,9 @@
 <%- title 'Projects' -%>
 
 <div class="well">
+  <%- if current_user.is_admin? %> 
   <%= link_to 'Create project...', new_resource_path, :class => "btn btn-primary" %>
+  <%- end %> 
 </div>
 
 <%- if collection.empty? -%>

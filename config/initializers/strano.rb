@@ -1,4 +1,3 @@
-require "github"
 require "strano"
 
 config_file = Rails.root.join("config", "strano.yml")

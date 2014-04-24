@@ -2,6 +2,7 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
 require 'capistrano-unicorn'
+require "delayed/recipes"
 
 set :shared_files, %w(config/database.yml db/production.sqlite3 config/unicorn.rb config/strano.yml)
 
@@ -31,6 +32,7 @@ after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (ze
 after 'deploy:setup', 'conf:upload_prod_confs'
 
 namespace :conf do
+  desc "Upload production configs"
   task :upload_confs do
     upload 'config/database-prod.yml', "#{shared_path}/files/config/database.yml"
     upload 'config/unicorn.rb', "#{shared_path}/files/config/unicorn.rb"

@@ -1,6 +1,7 @@
 class ProjectsController < InheritedResources::Base
 
   before_filter :authenticate_user!
+  before_filter :current_user_is_admin, :only => [:new, :create]
   before_filter :pull_repo, :only => [:show, :edit]
 
   respond_to :json, :only => :show

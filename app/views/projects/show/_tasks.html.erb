@@ -4,7 +4,9 @@
   </div>
 
   <div class="well">
+    <%- if current_user.is_admin? %> 
     <%= link_to 'New task', new_project_task_path(resource), :class => "btn btn-primary" %>
+    <%- end %> 
   </div>
   <%- @recent_tasks.each do |task| -%>
     <%= render :partial => "task", :locals => { :task => task, :hidden => false } %>

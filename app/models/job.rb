@@ -27,7 +27,6 @@ class Job < ActiveRecord::Base
     Rails.logger.info "Performing Job #{id}"
     if visible?
       Project::PullRepo.perform(project_id) unless project.pull_in_progress?
-
       success = true
 
       FileUtils.chdir project.repo.path do
