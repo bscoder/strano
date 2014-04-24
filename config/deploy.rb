@@ -24,6 +24,8 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/home/webmaster/#{application}"
 set :user, "webmaster"
 
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
+
 server 'hgsentry.bscoder.ru', :app, :web, :db,  :primary => true
 
 after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded

@@ -1,5 +1,5 @@
-require 'capistrano/cli'
-require 'capistrano_monkey/configuration/namespaces'
+#require 'capistrano/cli'
+#require 'capistrano_monkey/configuration/namespaces'
 
 class Project < ActiveRecord::Base
 
