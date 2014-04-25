@@ -20,9 +20,15 @@ module Strano
       repo = new(url)
       repo.git.fs_mkdir('..') if !repo.git.fs_exist?('..')
       repo.git.clone({:timeout => false}, url, repo.path)
+      repo.bundle_install if repo.bundled?
       repo
     end
 
+    def bundle_install
+      FileUtils.chdir path do
+        Bundler.clean_system("bundle install --deployment")
+      end
+    end
     # Pull a cloned repo.
     #
     # url - The SSH URL of the git repository that this local repo is cloned from.
@@ -31,6 +37,8 @@ module Strano
     def self.pull(url)
       repo = new(url)
       repo.git.pull({:timeout => false, :chdir => repo.path, :base => false})
+      repo.bundle_install if repo.bundled?
+      repo
     end
 
     # Remove a cloned repo from the filesystem.
@@ -83,6 +91,13 @@ module Strano
     # Returns a Boolean true if it has been capified.
     def capified?
       git.fs_exist? 'Capfile'
+    end
+
+    # Is this repo bundled? Meaning does it have a Gemfile in its root.
+    #
+    # Returns a Boolean true if it has Gemfile.
+    def bundled?
+      git.fs_exist? 'Gemfile'
     end
 
   end
