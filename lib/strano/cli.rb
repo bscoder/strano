@@ -1,7 +1,7 @@
-require 'capistrano/cli'
+#require 'capistrano/cli'
 module Strano
   # Defines constants and methods related to configuration
-  class CLI < Capistrano::CLI
+  class CLI2 < Capistrano::CLI
 
     attr_accessor :logger
 

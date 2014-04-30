@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140423171418) do
+ActiveRecord::Schema.define(:version => 20140430054306) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -53,7 +53,17 @@ ActiveRecord::Schema.define(:version => 20140423171418) do
     t.datetime "pulled_at"
     t.integer  "job_in_progress_id"
     t.string   "description"
+    t.integer  "owner_id"
   end
+
+  add_index "projects", ["owner_id"], :name => "index_projects_on_owner_id"
+
+  create_table "projects_users", :id => false, :force => true do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+  end
+
+  add_index "projects_users", ["project_id", "user_id"], :name => "index_projects_users_on_project_id_and_user_id"
 
   create_table "tasks", :force => true do |t|
     t.text    "name",        :null => false
@@ -61,6 +71,13 @@ ActiveRecord::Schema.define(:version => 20140423171418) do
     t.integer "author_id",   :null => false
     t.integer "project_id",  :null => false
   end
+
+  create_table "tasks_users", :id => false, :force => true do |t|
+    t.integer "task_id"
+    t.integer "user_id"
+  end
+
+  add_index "tasks_users", ["task_id", "user_id"], :name => "index_tasks_users_on_task_id_and_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

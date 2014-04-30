@@ -3,12 +3,12 @@
     <h4>Tasks</h4>
   </div>
 
+  <%- if current_user.is_admin? %> 
   <div class="well">
-    <%- if current_user.is_admin? %> 
     <%= link_to 'New task', new_project_task_path(resource), :class => "btn btn-primary" %>
-    <%- end %> 
   </div>
+  <%- end %> 
   <%- @recent_tasks.each do |task| -%>
-    <%= render :partial => "task", :locals => { :task => task, :hidden => false } %>
+  <%= render :partial => "task", :locals => { :task => task, :hidden => false } %>
   <%- end -%>
 </div>

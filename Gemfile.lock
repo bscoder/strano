@@ -33,6 +33,7 @@ GEM
     arel (3.0.3)
     bcrypt (3.1.7)
     builder (3.0.4)
+    cancancan (1.7.1)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -127,6 +128,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     marked (1.2.2)
+    method_source (0.8.2)
     mime-types (1.25.1)
     multi_json (1.8.4)
     multipart-post (1.2.0)
@@ -242,12 +244,15 @@ GEM
     whenever (0.7.3)
       activesupport (>= 2.3.4)
       chronic (~> 0.6.3)
+    zeus (0.15.1)
+      method_source (>= 0.6.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   ansible
+  cancancan (~> 1.7)
   capistrano (~> 2.13)
   capistrano-shared_file
   capistrano-unicorn
@@ -285,3 +290,4 @@ DEPENDENCIES
   vcr (~> 2)
   webmock
   whenever
+  zeus

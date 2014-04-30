@@ -7,6 +7,10 @@ class Project < ActiveRecord::Base
   has_many :tasks, :dependent => :destroy
   has_one :job_in_progress, :class_name => "Job"
 
+  has_and_belongs_to_many :users
+
+  belongs_to :owner, :class_name => "User"
+  
   validate :url, :presence => true, :uniqueness => { :case_sensitive => false }
 
   after_create :clone_repo

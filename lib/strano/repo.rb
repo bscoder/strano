@@ -29,6 +29,7 @@ module Strano
         Bundler.clean_system("bundle install --deployment")
       end
     end
+    
     # Pull a cloned repo.
     #
     # url - The SSH URL of the git repository that this local repo is cloned from.
@@ -36,6 +37,7 @@ module Strano
     # Returns Boolean true if the repo was successfully removed.
     def self.pull(url)
       repo = new(url)
+      repo = clone(url) unless repo.cloned?
       repo.git.pull({:timeout => false, :chdir => repo.path, :base => false})
       repo.bundle_install if repo.bundled?
       repo

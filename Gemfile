@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'mysql2'
 
 gem 'devise'
+gem 'cancancan', '~> 1.7'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -49,6 +50,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'marked'
   gem 'ffaker'
+  gem 'zeus'
 end
 
 group :development do

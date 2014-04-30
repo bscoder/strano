@@ -20,4 +20,5 @@ config/strano.yml
 
 vendor/repos
 
-.rvmrc
+.ruby-*
+config/database-prod.yml

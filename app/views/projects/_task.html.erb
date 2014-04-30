@@ -1,7 +1,10 @@
 <div class="row margin-top">
 
   <div class="span1 margin-top right">
-    <%= link_to 'Run...', new_project_jobs_path(resource, task.id), :class => "btn btn-primary" %>
+    <%- if can? :execute, task -%>
+      <%= link_to 'Run...', new_project_jobs_path(resource, task.id),
+      :class => "btn btn-primary" %>
+    <%- end -%>
   </div>
 
   <div class="span11 bordered-bottom padding-bottom2 padding-top">

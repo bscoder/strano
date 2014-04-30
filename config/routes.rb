@@ -2,8 +2,8 @@ Strano::Application.routes.draw do
 
   devise_for :users
 
-  match '/auth/:provider/callback' => 'sessions#create'
-  match '/auth/failure' => 'sessions#failure'
+  #match '/auth/:provider/callback' => 'sessions#create'
+  #match '/auth/failure' => 'sessions#failure'
 
   devise_scope :user do
     get 'sign_in', :to => 'devise/sessions#new'

@@ -28,9 +28,10 @@ set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 server 'hgsentry.bscoder.ru', :app, :web, :db,  :primary => true
 
-after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
+#after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'   # app preloaded
-after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (ze
+after 'deploy:restart', 'delayed_job:restart'   # app preloaded
+#after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (ze
 after 'deploy:setup', 'conf:upload_prod_confs'
 
 namespace :conf do

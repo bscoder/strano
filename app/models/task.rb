@@ -6,6 +6,8 @@ class Task < ActiveRecord::Base
   belongs_to :author, :class_name => User
   belongs_to :project
 
+  has_and_belongs_to_many :users
+
   validate :precense => [:project, :author]
 
   def with_argument?
