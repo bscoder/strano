@@ -7,6 +7,9 @@ gem 'mysql2'
 gem 'devise'
 gem 'cancancan', '~> 1.7'
 
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
